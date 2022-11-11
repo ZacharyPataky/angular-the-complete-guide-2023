@@ -7,12 +7,11 @@
             </button>
             <a routerLink="/" class="navbar-brand">Recipe Book</a>
         </div>
+        
         <div class="navbar-collapse" [class.collapse]="collapsed" (window:resize)="collapsed = true">
-
-
             <ul class="nav navbar-nav">
-                <li><a href="#">Recipes</a> </li>
-                <li><a href="#">Shopping List</a></li>
+                <li><a href="#" (click)="onSelect('recipe')">Recipes</a> </li>
+                <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
