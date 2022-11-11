@@ -5,3 +5,11 @@
 p {
   color: blue;
 }
+
+button {
+  margin-bottom: 20px;
+}
+
+button:first-of-type {
+  margin-right: 10px;
+}

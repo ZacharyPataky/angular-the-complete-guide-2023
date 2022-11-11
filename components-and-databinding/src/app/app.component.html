@@ -1,34 +1,22 @@
 <div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <p>Add new Servers or blueprints!</p>
-      <label>Server Name</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerName">
-      <label>Server Content</label>
-      <input type="text" class="form-control" [(ngModel)]="newServerContent">
-      <br>
-      <button
-        class="btn btn-primary"
-        (click)="onAddServer()">Add Server</button>
-      <button
-        class="btn btn-primary"
-        (click)="onAddBlueprint()">Add Server Blueprint</button>
-    </div>
-  </div>
+  <app-cockpit 
+    (serverCreated)="onServerAdded($event)"
+    (bpCreated)="onBlueprintAdded($event)">
+  </app-cockpit>
   <hr>
   <div class="row">
     <div class="col-xs-12">
-      <div
-        class="panel panel-default"
-        *ngFor="let element of serverElements">
-        <div class="panel-heading">{{ element.name }}</div>
-        <div class="panel-body">
-          <p>
-            <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
-            <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+      <button class="btn btn-primary" (click)="onChangeFirst()">Change First Component</button>
+      <button class="btn btn-danger" (click)="onDestroyFirst()">Destroy First Component</button>
+      <app-server-element 
+        *ngFor="let serverElement of serverElements" 
+        [srvElement]="serverElement"
+        [name]="serverElement.name">
+          <p #contentParagraph>
+            <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+            <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
           </p>
-        </div>
-      </div>
+      </app-server-element>
     </div>
   </div>
 </div>
