@@ -14,9 +14,11 @@
       </ol>
     </div>
   </div>
+  <hr>
   <div class="row">
     <div class="col-xs-12">
       <app-game-control (intervalFired)="onIntervalFired($event)"></app-game-control>
+      <hr>
       <div class="row">
         <div class="col-xs-12">
           <app-odd *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-odd>
