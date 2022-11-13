@@ -18,4 +18,4 @@ This course taught me the fundamentals about modules, directives, components, da
 * How to optimize my (bigger) Angular Application.
 * An introduction to NgRx and complex state management.
 
-Feel free to look around if you need a quick refresher on any topic.  I feel like I may periodically snnoop back here myself.
+Feel free to look around if you need a quick refresher on any topic.  I feel like I may periodically snoop back here myself.
