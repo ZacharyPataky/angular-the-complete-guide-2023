@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 col-md-offset-2">
+      <app-active-users
+        [users]="activeUsers"
+        (userSetToInactive)="onSetToInactive($event)"></app-active-users>
+      <app-inactive-users
+        [users]="inactiveUsers"
+        (userSetToActive)="onSetToActive($event)"></app-inactive-users>
+    </div>
+    <!--
+      Optimize this app by adding a UsersService which manages the active and inactive users.
+
+      Also add a CounterService which counts the number of active->inactive and inactive->active actions.
+    -->
+  </div>
+</div>
