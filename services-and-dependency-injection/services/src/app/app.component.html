@@ -6,8 +6,8 @@
       <app-account
         *ngFor="let acc of accounts; let i = index"
         [account]="acc"
-        [id]="i"
-        (statusChanged)="onStatusChanged($event)"></app-account>
+        [id]="i">
+      </app-account>
     </div>
   </div>
 </div>
