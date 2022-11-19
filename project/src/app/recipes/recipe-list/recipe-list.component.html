@@ -1,14 +1,15 @@
 <div class="row">
     <div class="col-xs-12">
-        <button class="btn btn-success">New Recipe</button>
+        <button class="btn btn-success" (click)="onNewRecipe()">New Recipe</button>
     </div>
 </div>
 <hr>
 <div class="row">
     <div class="col-xs-12">
         <app-recipe-item
-            *ngFor="let recipeElement of recipes"
-            [recipe]="recipeElement">
+            *ngFor="let recipeElement of recipes; let i = index"
+            [recipe]="recipeElement"
+            [index]="i">
             <!-- [recipe] is a reference to the @Input from recipe-item; we're sending each recipe from here to recipe-item -->
         </app-recipe-item>
     </div>
