@@ -14,6 +14,36 @@
 
           Upon submitting the form, simply print the value to the console
       -->
+      <form [formGroup]="projectForm" (ngSubmit)="onSaveSubmit()">
+        <div class="form-group">
+          <label for="name">Project Name</label>
+          <input 
+            type="text"
+            id="name"
+            class="form-control"
+            formControlName="projectName">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="text"
+            id="email"
+            class="form-control"
+            formControlName="email">
+        </div>
+        <div class="form-group">
+          <label for="status">Project Status</label>
+          <select 
+            id="status"
+            class="form-control"
+            formControlName="projectStatus">
+              <option value="stable">Stable</option>
+              <option value="critical">Critical</option>
+              <option value="finished">Finished</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Create Project!</button>
+      </form>
     </div>
   </div>
 </div>
