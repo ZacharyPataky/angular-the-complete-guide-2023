@@ -1,6 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <input type="text" [(ngModel)]="filteredStatus">
+      <br>
+      <button class="btn btn-primary" (click)="onAddServer()">Add Server</button>
+      <br><br>
+      <h2>App Status: {{ appStatus | async}}</h2>
+      <hr>
       <ul class="list-group">
         <li
           class="list-group-item"
@@ -10,7 +16,9 @@
             class="badge">
             {{ server.status }}
           </span>
-          <strong>{{ server.name }}</strong> | {{ server.instanceType }} | {{ server.started }}
+          <strong>{{ server.name }}</strong> |
+          {{ server.instanceType | uppercase }} |
+          {{ server.started | date:'fullDate' | uppercase }}
         </li>
       </ul>
     </div>
