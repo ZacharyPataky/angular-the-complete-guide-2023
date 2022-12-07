@@ -51,7 +51,13 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-md-6 col-md-offset-3">
-      <p>No posts available!</p>
+      <p *ngIf="loadedPosts.length < 1">No posts available!</p>
+      <ul *ngIf="loadedPosts.length >= 1" class="list-group">
+        <li *ngFor="let post of loadedPosts" class="list-group-item">
+          <h1>{{ post.title }}</h1>
+          <p>{{ post.content }}</p>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
