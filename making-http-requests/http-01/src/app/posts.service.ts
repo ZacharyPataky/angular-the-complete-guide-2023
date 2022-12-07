@@ -3,12 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 import { Post } from './post.model';
 
-import { map } from 'rxjs/operators';
+import { Subject, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
+
+  error = new Subject<string>();
 
   constructor(private http: HttpClient) { }
 
@@ -23,20 +26,27 @@ export class PostsService {
       postData
     ).subscribe(responseData => {
       console.log(responseData);
+    }, error => {
+      this.error.next(error.next);
     });
   }
 
   fetchPosts() {
     return this.http.get<{ [key: string]: Post }>('https://ng-complete-guide-8fc7c-default-rtdb.firebaseio.com/posts.json')
-      .pipe(map(responseData => {
-        const postsArray: Post[] = [];
-        for (const key in responseData) {
-          if (responseData.hasOwnProperty(key)) {
-            postsArray.push({ ...responseData[key], id: key });
+      .pipe(
+        map(responseData => {
+          const postsArray: Post[] = [];
+          for (const key in responseData) {
+            if (responseData.hasOwnProperty(key)) {
+              postsArray.push({ ...responseData[key], id: key });
+            }
           }
-        }
-        return postsArray;
-      }));
+          return postsArray;
+        }),
+        catchError(errorRes => {
+          return throwError(errorRes);
+        })
+      );
   }
 
   deletePosts() {
