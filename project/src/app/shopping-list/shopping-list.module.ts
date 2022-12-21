@@ -17,6 +17,6 @@ import { ShoppingListComponent } from "./shopping-list.component";
       { path: '', component: ShoppingListComponent },
     ]),
     SharedModule
-  ]
+  ],
 })
 export class ShoppingListModule { }
