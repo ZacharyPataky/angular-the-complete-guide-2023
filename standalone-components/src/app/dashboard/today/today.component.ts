@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-today',
   standalone: true,
-  imports: [CommonModule],
+  selector: 'app-today',
   templateUrl: './today.component.html',
   styleUrls: ['./today.component.scss']
 })

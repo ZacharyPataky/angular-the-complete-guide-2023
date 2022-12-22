@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { WelcomeComponent } from '../welcome/welcome.component';
 
 @Component({
-  selector: 'app-about',
   standalone: true,
-  imports: [WelcomeComponent],
+  selector: 'app-about',
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.scss']
 })
