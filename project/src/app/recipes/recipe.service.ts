@@ -3,7 +3,6 @@ import { Subject } from 'rxjs/internal/Subject';
 import { Store } from '@ngrx/store';
 
 import { Ingredient } from '../shared/ingredient.model';
-import { ShoppingListService } from '../shopping-list/shopping-list.service';
 import { Recipe } from './recipe.model';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions'
 import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer'
@@ -37,7 +36,6 @@ export class RecipeService {
   private recipes: Recipe[] = [];
 
   constructor(
-    private shoppingListService: ShoppingListService,
     private store: Store<fromShoppingList.AppState>
   ) { }
 
@@ -70,7 +68,6 @@ export class RecipeService {
   }
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
-    // this.shoppingListService.addIngredients(ingredients);
     this.store.dispatch(new ShoppingListActions.AddIngredients(ingredients));
   }
 
