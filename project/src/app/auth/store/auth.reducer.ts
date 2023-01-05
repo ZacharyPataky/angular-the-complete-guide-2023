@@ -30,10 +30,12 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         user: user,
         loading: false
       };
-    case AuthActions.LOGOUT:
+    case AuthActions.AUTHENTICATE_FAILURE:
       return {
         ...state,
-        user: null
+        user: null,
+        authError: action.payload,
+        loading: false
       };
     case AuthActions.LOGIN_START:  // Same process as SIGNUP_START
     case AuthActions.SIGNUP_START:
@@ -42,12 +44,10 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
         authError: null,
         loading: true
       };
-    case AuthActions.AUTHENTICATE_FAILURE:
+    case AuthActions.LOGOUT:
       return {
         ...state,
-        user: null,
-        authError: action.payload,
-        loading: false
+        user: null
       };
     case AuthActions.CLEAR_ERROR:
       return {
