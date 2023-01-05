@@ -3,6 +3,7 @@ import { Action } from "@ngrx/store";
 export type AuthActions =
   | AuthenticateSuccess
   | AuthenticateFailure
+  | AutoLogin
   | LoginStart
   | Logout
   | SignupStart
@@ -10,6 +11,7 @@ export type AuthActions =
 
 export const AUTHENTICATE_SUCCESS = '[Auth] Authenticate Success';
 export const AUTHENTICATE_FAILURE = '[Auth] Authenticate Failure';
+export const AUTO_LOGIN = '[Auth] Auto Login'
 export const LOGIN_START = '[Auth] Login Start';
 export const LOGOUT = '[Auth] Logout';
 export const SIGNUP_START = '[Auth] Signup Start';
@@ -32,6 +34,10 @@ export class AuthenticateFailure implements Action {
   constructor(
     public payload: string
   ) { }
+}
+
+export class AutoLogin implements Action {
+  readonly type = AUTO_LOGIN;
 }
 
 export class LoginStart implements Action {
