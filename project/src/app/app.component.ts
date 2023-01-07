@@ -15,7 +15,6 @@ export class AppComponent implements OnInit {
   title = 'project';
 
   constructor(
-    private authService: AuthService,
     private loggingService: LoggingService,
     private store: Store<fromApp.AppState>
   ) { }
