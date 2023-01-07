@@ -114,7 +114,8 @@ export class AuthEffects {
           password: signupActions.payload.password,
           returnSecureToken: true
         }
-      ).pipe(
+      )
+      .pipe(
         tap(resData => {
           this.authService.setLogoutTimer(+resData.expiresIn * 1000);
         }),
@@ -144,7 +145,8 @@ export class AuthEffects {
           password: authData.payload.password,
           returnSecureToken: true
         }
-      ).pipe(
+      )
+      .pipe(
         tap(resData => {
           this.authService.setLogoutTimer(+resData.expiresIn * 1000);
         }),
