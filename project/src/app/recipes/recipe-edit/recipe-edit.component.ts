@@ -1,21 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router'
 import { Store } from '@ngrx/store';
 import { RecipeService } from '../recipe.service';
 import { map } from 'rxjs/operators';
 import * as fromApp from '../../store/app.reducer';
+import * as RecipeActions from '../store/recipe.actions';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-edit',
   templateUrl: './recipe-edit.component.html',
   styleUrls: ['./recipe-edit.component.css']
 })
-export class RecipeEditComponent implements OnInit {
+export class RecipeEditComponent implements OnInit, OnDestroy {
 
   id: number;
   editMode: boolean = false;
   recipeForm: FormGroup;
+
+  private storeSub: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,6 +39,12 @@ export class RecipeEditComponent implements OnInit {
       );
   }
 
+  ngOnDestroy(): void {
+    if (this.storeSub) {
+      this.storeSub.unsubscribe();
+    }
+  }
+
   private initForm() {
     let recipeName = '';
     let recipeImagePath = '';
@@ -42,7 +52,7 @@ export class RecipeEditComponent implements OnInit {
     let recipeIngredients = new FormArray([]);
 
     if (this.editMode) {
-      this.store.select('recipes')
+      this.storeSub = this.store.select('recipes')
         .pipe(
           map(recipeState => {
             return recipeState.recipes.find((recipe, index) => {
@@ -111,9 +121,14 @@ export class RecipeEditComponent implements OnInit {
     // );
 
     if (this.editMode) {
-      this.recipeService.updateRecipe(this.id, this.recipeForm.value)  // Legal since fields match
+      // this.recipeService.updateRecipe(this.id, this.recipeForm.value)  // Legal since fields match
+      this.store.dispatch(new RecipeActions.UpdateRecipe({
+        index: this.id,
+        newRecipe: this.recipeForm.value
+      }));
     } else {
-      this.recipeService.addRecipe(this.recipeForm.value);  // Legal since fields match
+      // this.recipeService.addRecipe(this.recipeForm.value);  // Legal since fields match
+      this.store.dispatch(new RecipeActions.AddRecipe(this.recipeForm.value));
     }
 
     this.onCancel();
