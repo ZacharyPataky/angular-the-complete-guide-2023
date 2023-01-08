@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Animations</h1>
+      <div class="btn-toolbar">
+        <button class="btn btn-primary">Animate!</button>
+        <button class="btn btn-primary">Shrink!</button>
+      </div>
+      <hr>
+      <div></div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <input type="text" #input>
+      <button class="btn btn-primary" (click)="onAdd(input.value)">Add Item!</button>
+      <hr>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          (click)="onDelete(item)"
+          *ngFor="let item of list">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-xs-12">
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          (click)="onDelete(item)"
+          *ngFor="let item of list">
+          {{ item }}
+        </li>
+      </ul>
+    </div>
+</div>
