@@ -9,7 +9,9 @@
       <hr>
       <div
         style="width: 100px; height: 100px"
-        [@divState]="state">
+        [@divState]="state"
+        (@divState.start)="animationStarted($event)"
+        (@divState.done)="animationEnded($event)">
       </div>
       <br>
       <div
@@ -42,6 +44,7 @@
         <li
           class="list-group-item"
           (click)="onDelete(item)"
+          [@list2]
           *ngFor="let item of list">
           {{ item }}
         </li>
