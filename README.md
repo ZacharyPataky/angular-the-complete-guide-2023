@@ -1,6 +1,6 @@
 # angular-the-complete-guide-2023
 
-This repository contains the code written during my tiem studying Maximilian Schwarzmüller's [Angular - The Complete Guide 2023] on Udemy.
+This repository contains the code written during my time studying Maximilian Schwarzmüller's [Angular - The Complete Guide 2023] on Udemy.
 
 This course is the most comprehensive and best-selling Angular course on Udemy.  From Setup to Deployment, this course covers it all.  I learned all about Components, Directives, Services, Forms, HTTP Access, Authentication, Optimizing an Angular App with Modules and Offline Compilation, the Angular CLI, and much more.
 
